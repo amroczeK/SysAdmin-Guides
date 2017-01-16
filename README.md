@@ -42,3 +42,4 @@ Reference: https://community.spiceworks.com/how_to/103538-properly-renaming-a-do
 1. Under "DFS Management" in "File Services", expand "Namespaces" and click the UNC path created earlier e.g. "\\Distro\DFS"
 2. Right-click "\\Distro\DFS" -> New Folder
 3. Enter the folder name and add target folder e.g. "\\DCSouth\users", NOTE: make sure the folders you are selecting are already shared on the server. This folder will now appear inside "\\Distro\DFS"
+4. Continue adding folders from multiple servers if required, to have a consolidated folder share server. NOTE: Each folder will show you their namespace/path in their properties
