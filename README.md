@@ -34,12 +34,12 @@ Reference: https://community.spiceworks.com/how_to/103538-properly-renaming-a-do
 ### Namespace Configuration
 1. Expand File Services -> Right-click "DFS Management" -> "New Namespace"
 2. Enter the name of the server that will host the namespace or browse to it
-3. Enter the name for the namespace, e.g. create a UNC path to combine network shares, "\\Distro\DFS"
+3. Enter the name for the namespace, e.g. create a UNC path to combine network shares, "\\\Distro\DFS"
 4. Choose between Domain-based/Stand-alone namespace, note: Domain-based is most common
 5. Click Create to create the name under "Review Settings..."
 
 ### Adding folders to namespace
-1. Under "DFS Management" in "File Services", expand "Namespaces" and click the UNC path created earlier e.g. "\\Distro\DFS"
+1. Under "DFS Management" in "File Services", expand "Namespaces" and click the UNC path created earlier e.g. "\\\Distro\DFS"
 2. Right-click "\\Distro\DFS" -> New Folder
 3. Enter the folder name and add target folder e.g. "\\DCSouth\users", NOTE: make sure the folders you are selecting are already shared on the server. This folder will now appear inside "\\Distro\DFS"
 4. Continue adding folders from multiple servers if required, to have a consolidated folder share server. NOTE: Each folder will show you their namespace/path in their properties
@@ -48,9 +48,9 @@ Reference: https://community.spiceworks.com/how_to/103538-properly-renaming-a-do
 This is used to replicate folders and their contents by syncing across the network. For example if you have a "Scanned" folder which stores files scanned by an office printer but want the contents of this folder to by synced to a "Scanned" folder on another server/site location, you can use DFS Replication to achieve this by setting up a target folder for the source to replicate/sync to.
 
 1. Under "DFS Management" in "File Services", expand "Namespaces"
-2. Create a folder called "Scanned" and add a target folder e.g. "\\DCNorth\Scanned" which is an empty folder
+2. Create a folder called "Scanned" and add a target folder e.g. "\\\DCNorth\Scanned" which is an empty folder
 3. Right-click the target folder you wish to have files replicate to and click "Add Folder Target"
-4. Enter path of folder you want to sync from e.g. "\\DCSouth\Scanned" which is the source folder containing the content
+4. Enter path of folder you want to sync from e.g. "\\\DCSouth\Scanned" which is the source folder containing the content
 5. Click "Yes" when prompted to create a replication group
 6. "Replicate Folder Wizard" will open up, click "Next" for Step "Replication Group and Replicated Folder Name" unless you want to modify the default settings
 7. "Replication Eligibility" shows which folders are going to be replicated, click "Next"
