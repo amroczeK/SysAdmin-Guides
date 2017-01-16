@@ -40,8 +40,8 @@ Reference: https://community.spiceworks.com/how_to/103538-properly-renaming-a-do
 
 ### Adding folders to namespace
 1. Under "DFS Management" in "File Services", expand "Namespaces" and click the UNC path created earlier e.g. "\\\Distro\DFS"
-2. Right-click "\\Distro\DFS" -> New Folder
-3. Enter the folder name and add target folder e.g. "\\DCSouth\users", NOTE: make sure the folders you are selecting are already shared on the server. This folder will now appear inside "\\Distro\DFS"
+2. Right-click "\\\Distro\DFS" -> New Folder
+3. Enter the folder name and add target folder e.g. "\\DCSouth\users", NOTE: make sure the folders you are selecting are already shared on the server. This folder will now appear inside "\\\Distro\DFS"
 4. Continue adding folders from multiple servers if required, to have a consolidated folder share server. NOTE: Each folder will show you their namespace/path in their properties
 
 ### Replication Configuration
@@ -59,4 +59,4 @@ This is used to replicate folders and their contents by syncing across the netwo
 10. In "Replication Group Schedule and Bandwidth", select "Replicate continuously..." if you want 24/7 syncing/replication and select the desired "Bandwidth", "Full" is the default setting and click "Next". NOTE: It is best to limit the bandwidth so it does not impact the network too much
 11. In step "Confirmation" click "Close" and click "OK" on "Replication Delay" prompt
 
-After a few minutes the target folder will sync with the source folder and aquire all its files. Therefore "\\DCNorth\Scanned" and "\\Distro\DFS\Scanned" will have all documents and files in "\\DCSouth\Scanned".
+After a few minutes the target folder will sync with the source folder and aquire all its files. Therefore "\\\DCNorth\Scanned" and "\\\Distro\DFS\Scanned" will have all documents and files in "\\\DCSouth\Scanned".
