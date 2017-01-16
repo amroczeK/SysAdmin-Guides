@@ -31,7 +31,7 @@ Reference: https://community.spiceworks.com/how_to/103538-properly-renaming-a-do
 2. Choose to create a namespace now or later
 3. Confirm & Install
 
-### Configuration
+### Namespace Configuration
 1. Expand File Services -> Right-click "DFS Management" -> "New Namespace"
 2. Enter the name of the server that will host the namespace or browse to it
 3. Enter the name for the namespace, e.g. create a UNC path to combine network shares, "\\Distro\DFS"
@@ -43,3 +43,20 @@ Reference: https://community.spiceworks.com/how_to/103538-properly-renaming-a-do
 2. Right-click "\\Distro\DFS" -> New Folder
 3. Enter the folder name and add target folder e.g. "\\DCSouth\users", NOTE: make sure the folders you are selecting are already shared on the server. This folder will now appear inside "\\Distro\DFS"
 4. Continue adding folders from multiple servers if required, to have a consolidated folder share server. NOTE: Each folder will show you their namespace/path in their properties
+
+### Replication Configuration
+This is used to replicate folders and their contents by syncing across the network. For example if you have a "Scanned" folder which stores files scanned by an office printer but want the contents of this folder to by synced to a "Scanned" folder on another server/site location, you can use DFS Replication to achieve this by setting up a target folder for the source to replicate/sync to.
+
+1. Under "DFS Management" in "File Services", expand "Namespaces"
+2. Create a folder called "Scanned" and add a target folder e.g. "\\DCNorth\Scanned" which is an empty folder
+3. Right-click the target folder you wish to have files replicate to and click "Add Folder Target"
+4. Enter path of folder you want to sync from e.g. "\\DCSouth\Scanned" which is the source folder containing the content
+5. Click "Yes" when prompted to create a replication group
+6. "Replicate Folder Wizard" will open up, click "Next" for Step "Replication Group and Replicated Folder Name" unless you want to modify the default settings
+7. "Replication Eligibility" shows which folders are going to be replicated, click "Next"
+8. In step "Primary Member", select the server which contains the folder with conent you wish to replicate from e.g. source
+9. In "Topology Selection", select "Full mesh" by default and click "Next". Click "No topology" if you want to customize your own topology
+10. In "Replication Group Schedule and Bandwidth", select "Replicate continuously..." if you want 24/7 syncing/replication and select the desired "Bandwidth", "Full" is the default setting and click "Next". NOTE: It is best to limit the bandwidth so it does not impact the network too much
+11. In step "Confirmation" click "Close" and click "OK" on "Replication Delay" prompt
+
+After a few minutes the target folder will sync with the source folder and aquire all its files. Therefore "\\DCNorth\Scanned" and "\\Distro\DFS\Scanned" will have all documents and files in "\\DCSouth\Scanned".
